@@ -8,13 +8,14 @@ body {
     overflow-x: hidden;
     background-color: #404345;
     font-family: Consolas, monaco, monospace;
+    font-size: 1rem;
 }
 
 .content {
-    width: 500px;
+    width: 50vh;
     text-align: justify;
     padding: 0;
-    margin: 20px;
+    margin: 10vh;
     color: #e4eaed;
     flex: 1;
 }
@@ -23,7 +24,7 @@ body {
 .footer {
     background-color: #1b1a1c;
     color: #e4eaed;
-    padding: 5px 100vh;
+    padding: 1vh 100vh;
     margin: 0;
     white-space: nowrap;
 }
@@ -33,10 +34,10 @@ body {
 }
 
 .blog-title {
-    margin-top: 40px;
+    margin-top: 20vh;
     color: #000000;
     background-color: #e4eaed;
-    padding: 2px 100vh;
+    padding: 1vh 100vh;
     white-space: nowrap;
     margin: 0;
 }
