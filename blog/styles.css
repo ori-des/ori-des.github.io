@@ -10,35 +10,31 @@ body {
 }
 
 .content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex: 1;
     width: 500px;
     text-align: justify;
     padding: 0;
-    margin-bottom: 20px;
+    margin: 20px;
     color: #e4eaed;
 }
 
 .header ,
 .footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: #1b1a1c;
     color: #e4eaed;
     padding: 5px 100vh;
     margin: 0;
-    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .header-title {
     text-align: center;
-    flex-shrink: 0;
 }
 
 .blog-title {
     margin-top: 40px;
     color: #000000;
+    background-color: #e4eaed;
+    padding: 2px 100vh;
+    white-space: nowrap;
+    margin: 0;
 }
