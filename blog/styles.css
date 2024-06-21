@@ -12,19 +12,22 @@ body {
     overflow-x: hidden;
     background-color: #404345;
     font-family: Consolas, monaco, monospace;
-    font-size: 0.8vw;
+    font-size: 2em;
     padding: 0;
     position: relative
 }
 
 .content {
-    width: 25vw;
+    min-width: 355px;
+    max-width: 900px;
+    width: 50vw;
     text-align: justify;
     padding: 0;
-    margin: 5px;
+    margin: 20px;
     color: #e4eaed;
     flex: 1;
-    font-size: 0.7vw;
+    font-size: 1em;
+    flex-shrink: 0;
 }
 
 .header ,
@@ -50,6 +53,8 @@ body {
 }
 
 @media only screen and (max-width: 760px) {
-
+    .wrapper {
+        font-size: 1em;
+    }
 
 }
