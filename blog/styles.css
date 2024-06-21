@@ -7,7 +7,7 @@ body {
     margin: 0;
     overflow-x: hidden;
     background-color: #404345;
-    font-family: Consolas, monaco, monospace; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5667px;;
+    font-family: Consolas, monaco, monospace;
 }
 
 .content {
