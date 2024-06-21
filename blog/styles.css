@@ -8,17 +8,17 @@ body {
     overflow-x: hidden;
     background-color: #404345;
     font-family: Consolas, monaco, monospace;
-    font-size: 1vw;
+    font-size: 0.8vw;
 }
 
 .content {
-    width: 30vw;
+    width: 25vw;
     text-align: justify;
     padding: 0;
     margin: 10vh;
     color: #e4eaed;
     flex: 1;
-    font-size: 0.8vw;
+    font-size: 0.65vw;
 }
 
 .header ,
