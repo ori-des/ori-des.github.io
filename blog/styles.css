@@ -1,4 +1,8 @@
 body {
+    margin: 0;
+}
+
+.wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,16 +13,18 @@ body {
     background-color: #404345;
     font-family: Consolas, monaco, monospace;
     font-size: 0.8vw;
+    padding: 0;
+    position: relative
 }
 
 .content {
     width: 25vw;
     text-align: justify;
     padding: 0;
-    margin: 10vh;
+    margin: 5px;
     color: #e4eaed;
     flex: 1;
-    font-size: 0.65vw;
+    font-size: 0.7vw;
 }
 
 .header ,
@@ -38,7 +44,12 @@ body {
     margin-top: 20vh;
     color: #000000;
     background-color: #e4eaed;
-    padding: 1vh 100vh;
+    padding: 1vw 100vw;
     white-space: nowrap;
     margin: 0;
+}
+
+@media only screen and (max-width: 760px) {
+
+
 }
