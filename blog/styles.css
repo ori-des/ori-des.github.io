@@ -8,23 +8,24 @@ body {
     overflow-x: hidden;
     background-color: #404345;
     font-family: Consolas, monaco, monospace;
-    font-size: 1rem;
+    font-size: 1vw;
 }
 
 .content {
-    width: 50vh;
+    width: 30vw;
     text-align: justify;
     padding: 0;
     margin: 10vh;
     color: #e4eaed;
     flex: 1;
+    font-size: 0.8vw;
 }
 
 .header ,
 .footer {
     background-color: #1b1a1c;
     color: #e4eaed;
-    padding: 1vh 100vh;
+    padding: 1vw 100vw;
     margin: 0;
     white-space: nowrap;
 }
