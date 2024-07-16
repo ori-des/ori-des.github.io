@@ -18,7 +18,7 @@ body {
 }
 
 .content {
-    min-width: 355px;
+    min-width: 300px;
     max-width: 900px;
     width: 35vw;
     text-align: justify;
@@ -62,7 +62,7 @@ code {
     }
 
     h2 {
-        font-size: 17px;
+        font-size: 16px;
     }
 
 }
