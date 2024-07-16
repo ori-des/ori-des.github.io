@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Just an alt grl</title>
+</head>
+<body>
+    <div class="wrapper">
+    <div class="header">
+        <div class="header-title"><h1>Just an alt grl</h1></div>
+    </div>    <div class="blog-title">
+        <div class="content-title"><h2>Creating a Static Site Generator.</h2></div>
+    </div>
+    <div class="content">
+While following a PHP YouTube tutorial, my attention got caught by the "include()" function. <br>Something I could use on my server to include pieces of html in different files. Immediately I wanted it for my blog, but being a beginner I had only the intuition that, if I'm hosting my blog on GitHub pages, I don't have control of what goes on in the server.<br>
+I mentioned this to a friend of mine that is being so kind as to be my coding coach, and he confirmed my intuition, with a catch, there is a way to have this feature on a static site.
+At the time of me writing this I still have a vague idea on how to build this Static Site Generator, but these are the steps I took to understand his instructions on how to make one:<br>
+<br>
+- Make three PHP files, one with the header, one with the footer, and of course the third one being everything in the middle with the include function at the top and bottom.
+(This led me to "frankensteining" my code, being that if I made it proper in all files it would break the CSS I already wrote for my blog)<br>
+<br>
+- Call the middle file on the console, this prints the PHP code into functioning HTML.<br>
+<br>
+- Copy and paste the html from my terminal into an HTML file.<br>
+<br>
+- Admire my creation on my browser.<br>
+<br>
+- Realize I can directly copy the PHP file into an HTML file by calling the command "php post.php > post.html".<br>
+<br>
+Now the challenge is to do what my friend suggested in his assignment, create a script that loops through the files of a folder, transform the middle files into HTML files with this > method, and output them into another folder that will be my generated blog.<br>
+<br>
+Using bash.<br>
+<br>
+This was my friend's solution using a bash script:<br>
+<br>
+<code>
+input_dir="root"<br>
+output_dir="blog"<br>
+<br>
+for file in "$input_dir"/*; do<br>
+&emsp;&emsp;fname=$(basename "$file")<br>
+&emsp;&emsp;php $file > "$output_dir/$fname.html"<br>
+done"<br>
+<br>
+</code>
+
+Now that I was properly spoiled I decided the only think I could do was to translate it in python, I'm using Windows to publish my blog, I can use bash but only from the Git Bash shell.<br>
+I could have translated it into PowerShell script but that felt like more googling than the googling I needed to do it in python.<br>
+<br>
+Using python.<br>
+<br>
+To go through my files and run a command in python I quickly found out I needed two imports: 'os' and 'subprocess' respectively.<br>
+Immediately my code looked like this:<br>
+<br>
+<code>
+import os<br>
+import subprocess<br>
+<br>
+input_dir = "root"<br>
+output_dir = "blog""<br>
+for file in os.listdir(input_dir):<br>
+&emsp;&emsp;fname = os.path.basename(file)<br>
+</code>
+<br>
+Then I ran into two problems: one, I couldn't figure out how to make the 'subprocess.run()' function work, how was I supposed to write the command? What other arguments did I need? I couldn't find an answer on any documentation or forum, or at least what I found confused me.<br>
+<br> 
+So I asked chat gpt:<br>
+<br>
+<code>command = f"php {file} > {output_dir}/{fname}.html"</code><br>
+<br>
+and:<br>
+<br>
+<code>subprocess.run(command, shell=True, check=True)</code><br>
+<br>
+These two lines were what I needed, but I was encountering another problem, the ".php" extension would stay in the file, and it became 0.php.html.<br>
+<br>
+So I added this:<br>
+<br>
+<code>fname = fname.split(".")[0]</code><br>
+<br>
+And this was the final code:<br>
+<br>
+<code>
+import os<br>
+import subprocess<br>
+<br>
+input_dir = "root"<br>
+output_dir = "blog""<br>
+<br>
+for file in os.listdir(input_dir):<br>
+&emsp;&emsp;fname = os.path.basename(file)<br>
+&emsp;&emsp;fname = fname.split(".")[0]<br>
+&emsp;&emsp;subprocess.run(f"php {input_dir}/{file} > {output_dir}/{fname}.html", shell=True, check=True)<br>
+<br></code>
+<br>
+
+
+</div>
+<div class="footer">
+        <div>.</div>
+    </div>
+    </div>
+</body>
+</html>
