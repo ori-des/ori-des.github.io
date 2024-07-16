@@ -12,7 +12,7 @@ body {
     overflow-x: hidden;
     background-color: #404345;
     font-family: Consolas, monaco, monospace;
-    font-size: 2em;
+    font-size: 1vw;
     padding: 0;
     position: relative
 }
@@ -20,13 +20,12 @@ body {
 .content {
     min-width: 355px;
     max-width: 900px;
-    width: 50vw;
+    width: 35vw;
     text-align: justify;
     padding: 0;
     margin: 20px;
     color: #e4eaed;
     flex: 1;
-    font-size: 1em;
     flex-shrink: 0;
 }
 
@@ -52,9 +51,13 @@ body {
     margin: 0;
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1000px) {
     .wrapper {
         font-size: 1em;
+    }
+
+    h2 {
+        font-size: 17px;
     }
 
 }
