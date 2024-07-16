@@ -51,6 +51,11 @@ body {
     margin: 0;
 }
 
+code {
+    font-size: small;
+    text-align: right;
+}
+
 @media only screen and (max-width: 1000px) {
     .wrapper {
         font-size: 1em;
