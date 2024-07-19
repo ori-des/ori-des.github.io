@@ -53,7 +53,32 @@ body {
 
 code {
     font-size: small;
-    text-align: right;
+}
+
+pre {
+    background-color: #696e70;
+    color: white;
+    border: solid;
+    border-color: #000000;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    text-align: left;
+}
+
+a:link {
+    color: #e4eaed;
+}
+
+a:visited {
+    color: #b6bec2;
+}
+
+a:hover {
+    background-color: #1b1a1c;
+}
+
+a:active {
+    color: #404345;
 }
 
 @media only screen and (max-width: 1000px) {
