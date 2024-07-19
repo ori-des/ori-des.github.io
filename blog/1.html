@@ -35,17 +35,17 @@ Using bash.<br>
 <br>
 This was my friend's solution using a bash script:<br>
 <br>
+<pre>
 <code>
-input_dir="root"<br>
-output_dir="blog"<br>
-<br>
-for file in "$input_dir"/*; do<br>
-&emsp;&emsp;fname=$(basename "$file")<br>
-&emsp;&emsp;php $file > "$output_dir/$fname.html"<br>
-done"<br>
-<br>
-</code>
+    input_dir="root"
+    output_dir="blog"
 
+    for file in "$input_dir"/*; do
+        fname=$(basename "$file")
+        php $file > "$output_dir/$fname.html"
+    done
+</code>
+</pre>
 Now that I was properly spoiled I decided the only think I could do was to translate it in python, I'm using Windows to publish my blog, I can use bash but only from the Git Bash shell.<br>
 I could have translated it into PowerShell script but that felt like more googling than the googling I needed to do it in python.<br>
 <br>
@@ -54,47 +54,51 @@ Using python.<br>
 To go through my files and run a command in python I quickly found out I needed two imports: 'os' and 'subprocess' respectively.<br>
 Immediately my code looked like this:<br>
 <br>
+<pre>
 <code>
-import os<br>
-import subprocess<br>
-<br>
-input_dir = "root"<br>
-output_dir = "blog""<br>
-for file in os.listdir(input_dir):<br>
-&emsp;&emsp;fname = os.path.basename(file)<br>
+    import os
+    import subprocess
+
+    input_dir = "root"
+    output_dir = "blog"
+    for file in os.listdir(input_dir):
+        fname = os.path.basename(file)
 </code>
+</pre>
 <br>
 Then I ran into two problems: one, I couldn't figure out how to make the 'subprocess.run()' function work, how was I supposed to write the command? What other arguments did I need? I couldn't find an answer on any documentation or forum, or at least what I found confused me.<br>
 <br> 
 So I asked chat gpt:<br>
 <br>
-<code>command = f"php {file} > {output_dir}/{fname}.html"</code><br>
+<pre><code> command = f"php {file} > {output_dir}/{fname}.html"</code></pre><br>
 <br>
 and:<br>
 <br>
-<code>subprocess.run(command, shell=True, check=True)</code><br>
+<pre>
+<code>  subprocess.run(command, shell=True, check=True)</code></pre>
 <br>
 These two lines were what I needed, but I was encountering another problem, the ".php" extension would stay in the file, and it became 0.php.html.<br>
 <br>
 So I added this:<br>
 <br>
-<code>fname = fname.split(".")[0]</code><br>
+<pre><code> fname = fname.split(".")[0]</code></pre><br>
 <br>
 And this was the final code:<br>
 <br>
+<pre>
 <code>
-import os<br>
-import subprocess<br>
-<br>
-input_dir = "root"<br>
-output_dir = "blog""<br>
-<br>
-for file in os.listdir(input_dir):<br>
-&emsp;&emsp;fname = os.path.basename(file)<br>
-&emsp;&emsp;fname = fname.split(".")[0]<br>
-&emsp;&emsp;subprocess.run(f"php {input_dir}/{file} > {output_dir}/{fname}.html", shell=True, check=True)<br>
-<br></code>
-<br>
+    import os
+    import subprocess
+
+    input_dir = "root"
+    output_dir = "blog""
+
+    for file in os.listdir(input_dir):
+        fname = os.path.basename(file)
+        fname = fname.split(".")[0]
+        subprocess.run(f"php {input_dir}/{file} > {output_dir}/{fname}.html", shell=True, check=True)
+</code>
+</pre>
 
 
 </div>
