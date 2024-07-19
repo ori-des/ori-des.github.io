@@ -51,6 +51,12 @@ body {
     margin: 0;
 }
 
+.mini-title {
+    text-align: center;
+    font-size: 1.5vw;
+    background-color: #1b1a1c;
+}
+
 code {
     font-size: small;
 }
