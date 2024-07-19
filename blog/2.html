@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Just an alt grl</title>
+</head>
+<body>
+    <div class="wrapper">
+    <div class="header">
+        <div class="header-title"><h1>Just an alt grl</h1></div>
+    </div><div class="blog-title">
+    <div class="content-title"><h2>Creating a Static Site Generator Pt. 2<br>{latest.html}</h2></div>
+</div>
+<div class="content">
+
+Another challenge my teacher put my way was to generate a file called 'latest.html' in which I displayed the newest entries in my blog.<br>
+Having built my generator in python, my first idea was to add the logic for this in the same file so I could generate all in one go.<br>
+But there was a big problem, how could I use python to write in the middle of a PHP file so that the html would be generated around it?
+That seemed like too complicated of a feat.<br> 
+Another problem I was encountering was, how do I get the latest file?
+My first approach was to compare the two directories I'm using to generate my files, and always append the newest file of the input folder to the top of my list.<br>
+This is how far I got with python:
+<pre>
+<code>
+	import os
+
+	input_dir = "root"
+	output_dir = "blog"
+	fname = []
+	latest = open("blog/latest.html", "a")
+
+	input_files = os.listdir(input_dir)
+	output_files = os.listdir(output_dir)
+
+	for file in input_files:
+    		fname.append(f"{os.path.basename(file).split(".")[0]}.html")
+
+	non_common_files = sorted(list(set(fname) ^ set(output_files)))
+
+	for file in non_common_files:
+    		print(file)
+
+
+	print(input_files)
+	print(output_files)
+	print(non_common_files)
+</code>
+</pre>
+
+But once I realized that the first problem was too big of an obstacle, I scrapped everything and decided to work directly in my latest.php file, so that when I call my python generator program, the PHP script will run and generate the info I need in the middle of my two "include()" functions.<br>
+<br>
+<div class="mini-title">Using PHP</div>
+<br>
+After taking care of the top and bottom include() functions and the misc. pieces of html I needed to make the formatting work, I started building the script-in-the-middle.<br>
+I decided to scrap the two folder comparison method to get the latest addition and just sort the files by last modified date.<br>
+After some googling to figure out how to list the files in a directory in PHP and its oddities of having to filter from the two dots variables you get, this is what I wrote down: <br>
+<br>
+<pre>
+<code>
+	$dir = "root";
+    	$files = scandir($dir);
+    	$files = array_diff($files, array(".", ".."));
+</code>
+</pre>
+<br>
+I then wrote a loop to go through the files and get their last modified date with the filemtime() function, echoing it on my file so I could see the output:<br>
+<br>
+<pre>
+<code>
+	foreach($files as $file){
+        	$mod_date = filemtime("$dir/$file");
+		echo $file . " " . date("d/m/Y h:i:s", $mod_date) . "< br>";
+	}
+</code>
+</pre>
+<br>
+The filemtime() function doesn't directly give you the date but a number that, and I'm guessing here, gets translated into a readable date for the user with the date() function.<br>
+After a bit of struggling with the sorting, first trying to use just an array but then opting for an associative array, I took advantage of the filemtime() peculiarity.<br>
+I created the associative array in the first loop, then I used the arsort() function to sort it by value.<br>
+I started another foreach loop in which I included a counter so that only the first five files would be printed, and then echoed the html needed to create a link and the filename together to print a working list of links.<br>
+<br>
+This was the final script:<br>
+<br>
+<pre>
+<code>
+    $dir = "root";
+    $files = scandir($dir);
+    $files = array_diff($files, array(".", ".."));
+    $file_mod_dates = array();
+
+    foreach($files as $file){
+        $mod_date = filemtime("$dir/$file");
+        $file_mod_dates[$file] = $mod_date;
+    }
+
+    arsort($file_mod_dates);
+
+    $i = 0;
+    foreach($file_mod_dates as $file => $date){
+        $file = explode(".", $file)[0];
+        if($i == 5){
+            break;
+        }
+        echo date("d/m/Y h:i:s", $date) . " < a href=\" linknamehere $file.html\">entry $file.</ a> < br>";
+        $i++;
+    }  
+</code>
+</pre>
+
+</div>
+<div class="footer">
+        <div>.</div>
+    </div>
+    </div>
+</body>
+</html>
