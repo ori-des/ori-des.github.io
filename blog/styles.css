@@ -38,7 +38,8 @@ body {
     white-space: nowrap;
 }
 
-.header-title {
+.header-title,
+.content-title {
     text-align: center;
 }
 
@@ -92,7 +93,8 @@ a:active {
         font-size: 1em;
     }
 
-    h2 {
+    h2,
+    .mini-title {
         font-size: 16px;
     }
 
