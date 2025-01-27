@@ -29,7 +29,8 @@ body {
     align-items: center;
     gap: 1em;
     grid-area: content;
-    font-size: 4em;
+    text-align: justify;
+    font-size: 1em;
 }
 
 a {
@@ -39,6 +40,10 @@ a {
 
 h1 {
     margin: 0
+}
+
+p {
+    width: 25em;
 }
 
 .footer {
