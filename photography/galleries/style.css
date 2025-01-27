@@ -25,7 +25,6 @@ body {
 
 .photos {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0.1em;
@@ -54,27 +53,12 @@ h1 {
     height: 2em;
 }
 
-.photo-and-text {
-    position: relative;
-    text-align: center;
-}
-
-a.photo-text {
-    color: white;
-}
-
-.center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: lighter;
-    letter-spacing: 0.5em;
+.arrow {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 100;
+    color: rgb(173, 173, 173);
 }
 
 img {
-    border-radius: 10px;
-    height: 2.5em;
-    width: 10em;
-    object-fit: cover;
+    height: 85vh;
 }
