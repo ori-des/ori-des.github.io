@@ -25,9 +25,10 @@ body {
 
 .photos {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 0.1em;
     grid-area: content;
     font-size: 4em;
 }
@@ -51,4 +52,26 @@ h1 {
     gap: 1em;
     background-color:rgb(158, 237, 255);
     height: 2em;
+}
+
+.photo-and-text {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: lighter;
+    letter-spacing: 0.5em;
+}
+
+img {
+    border-radius: 10px;
+    height: 2.5em;
+    width: 10em;
+    object-fit: cover;
 }
