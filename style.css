@@ -42,7 +42,8 @@ a {
 h1 {
     margin: 0;
     font-weight: lighter;
-    letter-spacing: 2em;
+    letter-spacing: 5vw;
+    white-space: nowrap;
 }
 
 .footer {
@@ -53,4 +54,17 @@ h1 {
     gap: 1em;
     background-color:rgb(158, 237, 255);
     height: 2em;
+}
+
+@media only screen and (max-width: 850px) {
+    .links {
+        flex-direction: column;
+        gap: 2em;
+    }
+}
+
+@media only screen and (max-width: 490px) {
+    h1 {
+        letter-spacing: 0.2em;
+    }
 }
