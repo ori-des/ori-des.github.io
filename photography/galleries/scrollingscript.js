@@ -5,23 +5,19 @@ const img = document.getElementById('image');
 leftScrollBtn.addEventListener('click', scroll);
 rightScrollBtn.addEventListener('click', scroll);
 
-let counter = 2;
+let counter = 1;
 
 function scroll(event) {
     let src = img.src;
-    let idk = src.split("/")
-    let directory = "/photography/photos/" +  idk[idk.length - 2];
-    let nextImg = idk[idk.length - 2] + counter + ".jpg";
-    console.log(directory, nextImg);
+    let gallery = src.split("/")
+    let directory = "/photography/photos/" +  gallery[gallery.length - 2];
 
-    if (counter > 18) {
-        return;
-    }
-
-    if(event.target == leftScrollBtn && counter > 2) {
-        console.log(counter);
-    } else if(event.target == rightScrollBtn) {
-        img.src = directory + "/" + nextImg;
+    if (event.target == leftScrollBtn && counter > 1) {
+        counter--
+    } else if (event.target == rightScrollBtn && counter < 18) {
         counter++
     }
+
+    let nextImg = gallery[gallery.length - 2] + counter + ".jpg";
+    img.src = directory + "/" + nextImg;
 }
